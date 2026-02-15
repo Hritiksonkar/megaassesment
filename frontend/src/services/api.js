@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api/';
 
 const api = axios.create({
     baseURL: API_BASE_URL,
@@ -19,7 +19,7 @@ api.interceptors.request.use((config) => {
 
 export const getContent = async () => {
     try {
-        const response = await api.get('/content');
+        const response = await api.get('content');
         return response.data;
     } catch (error) {
         console.error("Error fetching content:", error);
@@ -29,7 +29,7 @@ export const getContent = async () => {
 
 export const updateContent = async (content) => {
     try {
-        const response = await api.put('/content', content);
+        const response = await api.put('content', content);
         return response.data;
     } catch (error) {
         console.error("Error updating content:", error);
@@ -39,7 +39,7 @@ export const updateContent = async (content) => {
 
 export const loginUser = async (credentials) => {
     try {
-        const response = await api.post('/auth/login', credentials);
+        const response = await api.post('auth/login', credentials);
         return response.data;
     } catch (error) {
         console.error("Login failed:", error);
